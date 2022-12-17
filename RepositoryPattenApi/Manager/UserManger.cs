@@ -14,6 +14,11 @@ namespace RepositoryPattenApi.Manager
 
         }
 
+        public ICollection<User> GetAddressSarch(string Address)
+        {
+            return Get(c => c.Address.ToLower().Contains(Address));
+        }
+
         public User GetById(int id)
         {
             return GetFirstOrDefault(x => x.Id == id);

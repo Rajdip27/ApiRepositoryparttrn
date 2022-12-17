@@ -38,6 +38,19 @@ namespace RepositoryPattenApi.Controllers
                 return CustomResult(ex.Message, HttpStatusCode.BadRequest);
             }
         }
+        [HttpGet]
+        public IActionResult GetSarchAddress(string Address)
+        {
+            try
+            {
+                var result = _userManager.GetAddressSarch(Address);
+                return CustomResult("Sarch Result",result);
+
+            }catch(Exception ex)
+            {
+                return CustomResult(ex.Message, HttpStatusCode.BadRequest);
+            }
+        }
         [HttpPost]
         public IActionResult UserSave(User user)
         {
@@ -81,6 +94,19 @@ namespace RepositoryPattenApi.Controllers
             catch(Exception ex)
             {
                 return CustomResult(ex.Message,HttpStatusCode.BadRequest);
+            }
+        }
+        [HttpGet]
+        public IActionResult GetAllDesc()
+        {
+            try
+            {
+                var result=_userManager.GetAll().OrderByDescending(x => x.Id).ToList();
+                return CustomResult("Data Loaded Successfully..!", result);
+
+            }catch(Exception ex)
+            {
+                return CustomResult(ex.Message, HttpStatusCode.BadRequest);
             }
         }
 

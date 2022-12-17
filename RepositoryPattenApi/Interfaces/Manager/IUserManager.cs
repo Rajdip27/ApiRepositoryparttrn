@@ -8,6 +8,8 @@ namespace RepositoryPattenApi.Interfaces.Manager
         User GetById(int id);
         ICollection<User> UserSarch(string text);
         ICollection<User> PagingUser(int page, int pageSize);
+        ICollection<User> GetAddressSarch(string Address);
+        
 
     }
 }
